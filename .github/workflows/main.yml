@@ -7,8 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -30,3 +29,15 @@ jobs:
           registry: docker.pkg.github.com
           repository: lauchacarro/poc-githubpackages-docker/counter-image
           tag_with_ref: true
+          
+          
+  run-image:
+    name: Run Docker image from GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull Image
+        run: docker pull docker.pkg.github.com/lauchacarro/poc-githubpackages-docker/counter-image:main
+      - name: Run Image
+        run: docker run -it --rm counter-image 3
+
+
