@@ -48,6 +48,6 @@ jobs:
       - name: Pull Image
         run: docker pull docker.pkg.github.com/lauchacarro/poc-githubpackages-docker/counter-image:main
       - name: Run Image
-        run: docker run -i --rm counter-image 3
+        run: docker run -i --rm docker.pkg.github.com/lauchacarro/poc-githubpackages-docker/counter-image:main 3
 
 
